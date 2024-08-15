@@ -12,10 +12,10 @@
 
 <h2>Add this movie to a list</h2>
 
-<%= form_with(url: list_bookmarks_path, method: :post, local: true) do |form| %>
+<%= form_with(model: [@movie, Bookmark.new], local: true, data: { controller: "dynamic-form", dynamic_form_target: "form" }) do |form| %>
   <div class="field">
     <%= form.label :list_id, "Select a List" %>
-    <%= form.collection_select :list_id, List.all, :id, :name, prompt: "Choose a list" %>
+    <%= form.collection_select :list_id, List.all, :id, :name, prompt: "Choose a list", include_blank: true, data: { dynamic_form_target: "select" } %>
   </div>
   <div class="field">
     <%= form.label :comment %>
@@ -23,8 +23,6 @@
   </div>
   <%= form.hidden_field :movie_id, value: @movie.id %>
   <div class="actions">
-    <%= form.submit "Add to List" %>
+    <%= form.submit "Add to List", class: "btn" %>
   </div>
 <% end %>
-
-<%= link_to 'Back to Movies', movies_path %>

@@ -1,0 +1,60 @@
+/* General Layout */
+.movies-list,
+.lists-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.movie,
+.list {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  width: 300px;
+}
+
+/* Movie and List Specific Styles */
+.movie-poster,
+.list-poster {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.movie-poster-image,
+.list-poster-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.movie-details,
+.list-details {
+  text-align: left;
+}
+
+.movie-details h2,
+.list-details h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.movie-details p,
+.list-details p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Buttons */
+.btn {
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}

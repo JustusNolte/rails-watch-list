@@ -1,4 +1,4 @@
-<h1>Create a New List</h1>
+<h1>Edit List</h1>
 
 <%= form_with(model: @list, local: true) do |form| %>
   <% if @list.errors.any? %>
@@ -24,7 +24,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit 'Create List', class: "btn btn-primary" %>
+    <%= form.submit 'Update List', class: "btn btn-primary" %>
   </div>
 <% end %>
 
