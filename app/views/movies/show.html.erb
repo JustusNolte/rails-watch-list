@@ -1,0 +1,30 @@
+<h1><%= @movie.title %></h1>
+
+<div class="movie-details">
+  <div class="movie-poster">
+    <%= image_tag image_url(@movie.poster_url), alt: @movie.title, class: "movie-poster-image" %>
+  </div>
+  <div class="details">
+    <p><strong>Overview:</strong> <%= @movie.overview %></p>
+    <p><strong>Rating:</strong> <%= @movie.rating %>/10</p>
+  </div>
+</div>
+
+<h2>Add this movie to a list</h2>
+
+<%= form_with(url: list_bookmarks_path, method: :post, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :list_id, "Select a List" %>
+    <%= form.collection_select :list_id, List.all, :id, :name, prompt: "Choose a list" %>
+  </div>
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+  </div>
+  <%= form.hidden_field :movie_id, value: @movie.id %>
+  <div class="actions">
+    <%= form.submit "Add to List" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Movies', movies_path %>

@@ -1,0 +1,35 @@
+<h1><%= @list.name %></h1>
+
+<p><strong>Movies in this list:</strong></p>
+
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li>
+      <%= link_to bookmark.movie.title, movie_path(bookmark.movie) %>
+      <p><%= bookmark.comment %></p>
+      <%= link_to 'Remove', list_bookmark_path(@list, bookmark), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Lists', lists_path %>
+
+<h2>Add a movie to this list</h2>
+
+<%= form_with(model: [ @list, @list.bookmarks.build ], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :movie_id %>
+    <%= form.collection_select :movie_id, Movie.all, :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to Lists', lists_path %>

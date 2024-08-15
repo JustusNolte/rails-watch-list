@@ -1,0 +1,60 @@
+<h1>Top Rated Movies</h1>
+
+<div class="movies-list">
+  <% @movies.each do |movie| %>
+    <div class="movie">
+      <div class="movie-poster">
+        <%= link_to movie_path(movie) do %>
+          <%= image_tag image_url(movie.poster_url), alt: movie.title, class: "movie-poster-image" %>
+        <% end %>
+      </div>
+      <div class="movie-details">
+        <h2><%= link_to movie.title, movie_path(movie) %></h2>
+        <p><%= movie.overview %></p>
+        <p><strong>Rating:</strong> <%= movie.rating %>/10</p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- Add some basic styling for better presentation -->
+<style>
+  .movies-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .movie {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 300px;
+  }
+
+  .movie-poster {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .movie-poster-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .movie-details {
+    text-align: left;
+  }
+
+  .movie-details h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .movie-details p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+</style>
